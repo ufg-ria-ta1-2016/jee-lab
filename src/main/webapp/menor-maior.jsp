@@ -1,25 +1,49 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Menor/Maior</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Menor/Maior</title>
+	<link href="bootstrap-darkly.min.css" rel="stylesheet">
 </head>
 <body>
-	<h1>Menor/Maior</h1>
-	<form>
-		Idade: <input type="text" name="idade">
-		<button>Calcular</button>
-	</form>
+<div class="container">
+<form class="form-horizontal">
+	<fieldset>
+		<!-- Form Name -->
+		<legend>Menor / Maior</legend>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Idade</label>
+			<div class="col-md-6">
+				<input name="idade" type="text" placeholder="Coloque aqui a idade" class="form-control input-md">
+				<span class="help-block">Idade do individuo</span>
+			</div>
+		</div>
+		<!-- Button -->
+		<div class="form-group">
+			<label class="col-md-4 control-label"></label>
+			<div class="col-md-4">
+				<button class="btn btn-primary">Calcular</button>
+			</div>
+		</div>
+
+	</fieldset>
+</form>
 <%
-//Scriptlet.
-String idadeStr = request.getParameter("idade");
-//Se idadeStr for nula retorna "0" senão retorna a idade convertida.
-int idade = idadeStr == null ? 0 : Integer.parseInt(idadeStr);
-if (idade == 0) {
-  %><b>Informe a idade.</b><%
+	//Scriptlet.
+	String idadeStr = request.getParameter("idade");
+//Se idadeStr for nula retorna "0" senï¿½o retorna a idade convertida.
+	int idade = idadeStr == null ? 0 : Integer.parseInt(idadeStr);
+	if (idade == 0) {
+%><div class="alert alert-danger" role="alert">Informe a idade.</div><%
 } else if (idade >= 18) {
-  %><b><%=idade%> é de uma pessoa MAIOR de idade.</b><%
+%><div class="alert alert-success" role="alert"><%=idade%> e de uma pessoa MAIOR de idade.</div><%
 } else {
-  %><b><%=idade%> é de uma pessoa MENOR de idade.</b><%
-}
+%><div class="alert alert-success" role="alert"><%=idade%> e de uma pessoa MENOR de idade.</div><%
+	}
 %>
+	</div>
 </body>
 </html>
